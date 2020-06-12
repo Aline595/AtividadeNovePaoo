@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns	="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset ="UTF-8"/>
+		<meta name ="viewport"content="width=device-width" />
+		<title>Veiculos</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"rel="stylesheet" />
+	</head>
+	<body>
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-deading">
+				<h1 class="panel-title">Veiculo</h1>
+			</div>
+			<div class="panel-body">
+				<form class="form-inline" method="post" style="margin: 20px 0" th:action="@{/veiculos}" th:object="${veiculo}">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Modelo" th:field="*{modelo}"/>
+						<input type="text" class="form-control" placeholder="Marca" th:field="*{marca}"/>
+						<input type="number" class="form-control" placeholder="Ano de fabricação" th:field="*{anoDeFabricacao}"/>
+						<input type="text" class="form-control" placeholder="Cor" th:field="*{cor}"/>
+						<input type="number" class="form-control" placeholder="Litros" th:field="*{litros}"/>
+						<input type="number" class="form-control" placeholder="Cor" th:field="*{kml}"/>
+						<button type="submit" class="btn btn-primary">Adicionar</button>
+					</div>
+				</form>
+				<table class="table">
+					<thead>
+						<tr>
+							<td>Modelo</td>
+							<td>Marca</td>
+							<td>Ano de Fabricação</td>
+							<td>Cor</td>
+							<td>Litros</td>
+							<td>Km/L</td>
+							<td>Autonomia</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="veiculo: ${veiculos}">
+							<td th:text="${veiculo.modelo}"></td>
+							<td th:text="${veiculo.marca}"></td>
+							<td th:text="${veiculo.anoDeFabricacao}"></td>
+							<td th:text="${veiculo.cor}"></td>
+							<td th:text="${veiculo.litros}"></td>
+							<td th:text="${veiculo.kml}"></td>
+							<td th:text="${veiculo.autonomia}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
